@@ -1,0 +1,1 @@
+a simple script I made that halves GeoFS' sound volume when in cockpit cam, for aircraft that don't have cockpit enhanced sounds. Be cautious as the volume variable doesnt reset upon reload and there is a possibility of having the addon set volume to 0.5, 0.25, 0.125, etc every time you use it. I will fix this very soon

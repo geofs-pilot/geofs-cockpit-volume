@@ -9,7 +9,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=geo-fs.com
 // @grant        none
 // ==/UserScript==
-const exemptAircraft = new Set([2864, 2418, 2420, 2426, 5316, 5314, 5193, 2750, 5347, 5229, 5038, 2752, 4409, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 23, 24, 25, 27, 28, 29, 31, 51, 102]);
+const exemptAircraft = new Set([2864, 2418, 2420, 2426, 5316, 5314, 5193, 2750, 5347, 5229, 5038, 2752, 4409, 5347, 5405, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 23, 24, 25, 27, 28, 29, 31, 51, 102]);
 let savedVolume = null; 
 let wasCockpit = false;
 let volumeReduction = 0.5;
@@ -31,7 +31,7 @@ setInterval(() => {
         return;
     }
 
-    if (cameraMode === 'cockpit' || cameraMode === 'cockpitless' || cameraMode === 'Co-Pilot') {
+    if (cameraMode === 'cockpit' || cameraMode === 'cockpitless' || cameraMode === 'Jump Seat'|| cameraMode === 'Passenger' || cameraMode.toLowerCase().includes('pilot')) {
         if (!wasCockpit) {
             savedVolume = geofs.preferences.volume;
             geofs.preferences.volume = savedVolume * volumeReduction;

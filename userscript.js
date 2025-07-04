@@ -55,5 +55,10 @@ setInterval(() => {
     }
 }, 300);
 
+window.addEventListener("beforeunload", () => {
+    if (wasCockpit) {
+        geofs.preferences.volume = savedVolume || 1;
+    }
+});
 
 

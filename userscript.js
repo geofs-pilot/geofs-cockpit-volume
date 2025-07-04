@@ -2,7 +2,7 @@
 // @name         GeoFS-cockpit-volume
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  reduces volume for cc aircraft when in cockpit view
+// @description  Lowers the volume when in cockpit view in aircraft without dedicated cockpit sounds
 // @author       geofspilot
 // @match        https://www.geo-fs.com/geofs.php?v=*
 // @match        https://*.geo-fs.com/geofs.php*

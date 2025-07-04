@@ -31,7 +31,7 @@ setInterval(() => {
         return;
     }
 
-    if (cameraMode === 'cockpit' || cameraMode === 'cockpitless' || cameraMode === 'Jump Seat'|| cameraMode === 'Passenger' || cameraMode.toLowerCase().includes('pilot')) {
+    if (cameraMode === 'cockpit' || cameraMode === 'cockpitless' || cameraMode === 'Jump Seat'|| cameraMode.toLowerCase().includes('pilot')) {
         if (!wasCockpit) {
             savedVolume = geofs.preferences.volume;
             geofs.preferences.volume = savedVolume * volumeReduction;

@@ -17,7 +17,7 @@ let volumeReduction = 0.5;
 setInterval(() => {
     const currentId = Number(geofs.aircraft.instance.id);
     const isExempt = exemptAircraft.has(currentId);
-
+    const currentVolume = geofs.preferences.volume;
     const cameraMode = geofs.animation.values.cameraMode;
 
     if (isExempt) {

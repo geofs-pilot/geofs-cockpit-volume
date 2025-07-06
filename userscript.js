@@ -2,7 +2,7 @@
 // @name         GeoFS-cockpit-volume
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Lowers the volume when in cockpit view in aircraft without dedicated cockpit sounds
+// @description  Lowers the volume when in interior views in aircraft without dedicated cockpit sounds
 // @author       geofspilot
 // @match        https://www.geo-fs.com/geofs.php?v=*
 // @match        https://*.geo-fs.com/geofs.php*
@@ -13,13 +13,22 @@ const exemptAircraft = new Set([2864, 2418, 2420, 2426, 5316, 5314, 5193, 2750, 
 let savedVolume = null; 
 let wasCockpit = false;
 let volumeReduction = 0.5;
+let reductionCams = new Set (["cockpit", "jump seat", "pilot", "cabin", "door gunner", "docking controls", "mid-deck", "payload bay"])
+function matchesReduction(cameraMode) {
+    for (let keyword of reductionCams) {
+        if (cameraMode.toLowerCase().includes(keyword)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 setInterval(() => {
     const currentId = Number(geofs.aircraft.instance.id);
     const isExempt = exemptAircraft.has(currentId);
     const currentVolume = geofs.preferences.volume;
     const cameraMode = geofs.animation.values.cameraMode;
-
+    
     if (isExempt) {
         // reset the volume if we switch from cockpit view in a non-exempt aircraft to an exempt aircraft
         if (wasCockpit && savedVolume !== null) {
@@ -30,7 +39,7 @@ setInterval(() => {
         }
         return;
     }
-
+    let interior = matchesReduction(cameraMode);
     if (cameraMode === 'cockpit' || cameraMode === 'cockpitless' || cameraMode === 'Jump Seat'|| cameraMode.toLowerCase().includes('pilot')) {
         if (!wasCockpit) {
             savedVolume = geofs.preferences.volume;

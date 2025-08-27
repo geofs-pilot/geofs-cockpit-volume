@@ -1,1 +1,1 @@
-a simple script I made that halves GeoFS' sound volume when in cockpit cam, for aircraft that don't have cockpit enhanced sounds.
+a simple script I made that halves GeoFS' sound volume when in cockpit cam, for aircraft that don't have cockpit enhanced sounds. also used in all in one addon
